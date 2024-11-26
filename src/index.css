@@ -1,0 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* Oculta a barra no IE e Edge */
+  scrollbar-width: none; /* Oculta a barra no Firefox */
+}

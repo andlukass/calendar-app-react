@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: #333 !important; /* Cor do foco do campo */
+  border-width: 2px !important; /* Espessura do foco do campo */
+}
+
+.MuiInputLabel-root.Mui-focused {
+  color: #333 !important; /* Cor do rótulo ao focar */
+  border-width: 2px !important; /* Espessura do foco do campo */
+}
