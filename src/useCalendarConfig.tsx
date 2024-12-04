@@ -3,12 +3,13 @@ import { ICalendarConfig, IEvent } from "./interfaces";
 
 export interface IConfigProps {
   events: IEvent[];
+  currentUser?: string;
   openEventModal: (event: IEvent) => void;
   changeEvent: (id: string, date: Date, start: number, end: number) => void;
 }
 
 export const useCalendarConfig = (config: IConfigProps): ICalendarConfig => {
-  const { events, openEventModal, changeEvent } = config;
+  const { events, currentUser, openEventModal, changeEvent } = config;
 
   const [mode, setMode] = useState<"week" | "month">("week");
   const [currentDate, setToday] = useState(new Date());
@@ -52,6 +53,7 @@ export const useCalendarConfig = (config: IConfigProps): ICalendarConfig => {
     mode,
     events,
     currentDate,
+    currentUser,
     openEventModal,
     changeEvent,
     changeMode,

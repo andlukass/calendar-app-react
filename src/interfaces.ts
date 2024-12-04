@@ -2,6 +2,7 @@ export interface ICalendarConfig {
   mode: "week" | "month";
   events: any[];
   currentDate: Date;
+  currentUser?: string;
   openEventModal: (event: any) => void;
   changeEvent: (id: string, date: Date, start: number, end: number) => void;
   changeMode: (mode: "week" | "month") => void;
@@ -44,4 +45,6 @@ export type IEvent = {
   left?: string;
   depth?: number;
   groupDepth?: number;
+  isPersonal?: boolean;
+  createdBy?: string;
 };
