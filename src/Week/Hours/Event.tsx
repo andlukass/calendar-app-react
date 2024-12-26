@@ -51,6 +51,8 @@ function Event({
 
   const isPersonal = event.isPersonal && event.createdBy != config.currentUser;
 
+  const divColorHeight = 26 * eventSize;
+
   return (
     <div
       onClick={() => {
@@ -63,15 +65,27 @@ function Event({
       style={{ left: event.left, width: event.width }}
       onDragEnd={handleDragEnd}
     >
+      {/* <EventColor colors={event.colors} /> */}
       <div
-        className="flex items-center h-[25px]"
+        className="absolute flex flex-col w-full pointer-events-none"
+        style={{ height: divColorHeight + "px" }}
+      >
+        {event.colors.sort().map((color, index) => (
+          <div
+            className={"flex-1 w-full border-[0.5px] border-transparent"}
+            style={{ backgroundColor: color }}
+            key={index}
+          />
+        ))}
+      </div>
+      <div
+        className="flex items-center h-[25px] w-full border-blue border-4"
         draggable={!isPersonal}
         onDragOver={(e) => handleDragOver(e, event.start)}
         onDragStart={() =>
           drag && drag.startEventDraggin(event.start, event.id)
         }
       >
-        <EventColor colors={event.colors} />
         <span className="absolute text-xs text-white font-bold whitespace-pre-line text-nowrap max-w-full p-2 truncate leading-[13px] !pt-5">
           {isPersonal ? "" : event.title}
         </span>
@@ -87,7 +101,7 @@ function Event({
           key={index}
           draggable={!isPersonal}
         >
-          <EventColor colors={event.colors} />
+          {/* <EventColor colors={event.colors} /> */}
         </div>
       ))}
     </div>
